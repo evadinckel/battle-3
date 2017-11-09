@@ -1,6 +1,19 @@
+<% @turn %>
+
 <h1> <%= @player_1 %> </h1>
+<h3> hit points <%= @player_1_hit_points %> </h3>
+
+<% if @turn % 2 == 0%>
 <form action="/attack_player_2" method="post">
 <input type="submit" value="attack">Attack!</input>
 </form>
+<% end %>
+
 <h1> <%= @player_2 %> </h1>
 <h3> hit points: <%= @player_2_hit_points %> </h3>
+
+<% if @turn % 2 != 0 %>
+<form action="/attack_player_1" method="post">
+<input type="submit" value="attack">Attack!</input>
+</form>
+<% end %>

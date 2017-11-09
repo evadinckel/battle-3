@@ -7,8 +7,9 @@ class Battle < Sinatra::Base
   get '/battle' do
     'Testing infrastructure working!'
   end
-
+  $hp1 = 100
   $hp2 = 100
+  $count = 1
 
   get '/' do
     erb(:index)
@@ -25,14 +26,22 @@ class Battle < Sinatra::Base
     @player_1 = $game.return_name_1
     @player_2 = $game.return_name_2
     @player_2_hit_points = $hp2
+    @player_1_hit_points = $hp1
+    @turn = $count
     erb(:play)
   end
 
 post '/attack_player_2' do
-  Game.new($first_player, $second_player).attack
+  $game.attack_2
+  $game.switch_turn
   redirect to('/play')
 end
 
+post '/attack_player_1' do
+  $game.attack_1
+  $game.switch_turn
+  redirect to('/play')
+end
 
   run! if app_file == $0
 

@@ -30,6 +30,6 @@ RSpec.feature "attacking a player" do
   scenario "clicking button to attack and get confirmation" do
     sign_in_and_play
     click_on('attack')
-    expect(page).to have_content('hit points: 90')
+    expect(page).to have_content('hit points 90')
   end
 end
