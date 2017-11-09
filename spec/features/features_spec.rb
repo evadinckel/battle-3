@@ -27,14 +27,9 @@ RSpec.feature "viewing hit points" do
 end
 
 RSpec.feature "attacking a player" do
-  scenario "checking the attack button exists" do
-    sign_in_and_play
-    expect(page).to have_selector(:link_or_button, 'Attack!')
-  end
   scenario "clicking button to attack and get confirmation" do
     sign_in_and_play
-    click_button('Attack!')
-    window = switch_to_window { title == 'Attacking player 2' }
-    expect(window).to have_selector(:link_or_button, 'Ok')
+    click_on('attack')
+    expect(page).to have_content('hit points: 90')
   end
 end

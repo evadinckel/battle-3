@@ -1,4 +1,6 @@
 <h1> <%= @player_1 %> </h1>
-<button type="button">Attack!</button>
+<form action="/attack_player_2" method="post">
+<input type="submit" value="attack">Attack!</input>
+</form>
 <h1> <%= @player_2 %> </h1>
 <h3> hit points: <%= @player_2_hit_points %> </h3>
