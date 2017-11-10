@@ -1,6 +1,7 @@
 require './app.rb'
 
 
+
 RSpec.feature "battle page test", :type => :feature do
   scenario "Viewing the page" do
     visit "/battle"
@@ -31,5 +32,15 @@ RSpec.feature "attacking a player" do
     sign_in_and_play
     click_on('attack')
     expect(page).to have_content('hit points 90')
+  end
+  scenario "getting attacked player conformation" do
+    sign_in_and_play
+    click_on('attack')
+    expect(page).to have_content('eva has attacked andrew')
+  end
+  scenario "someone loses" do
+    sign_in_and_play
+    19.times {click_on('attack')}
+    expect(page).to have_content('andrew loses')
   end
 end

@@ -1,3 +1,4 @@
+
 <% @turn %>
 
 <h1> <%= @player_1 %> </h1>
@@ -17,3 +18,15 @@
 <input type="submit" value="attack">Attack!</input>
 </form>
 <% end %>
+
+
+<% if @hit %>
+<%= @hit %>
+<%end%>
+<br>
+
+<% if $hp1 == 0 %>
+<%= @player_1 %> loses
+<% elsif $hp2 == 0 %>
+<%= @player_2 %> loses
+<%end%>
